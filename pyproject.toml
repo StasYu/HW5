@@ -1,0 +1,25 @@
+[project]
+name = "HW5_Yu_Stas"
+version = "0.1.0"
+description = "HW5"
+authors = [
+    {name = "StasYu", email = "stasugai101@gmail.com"},
+]
+dependencies = [
+    "ruff>=0.7.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
+
+[tool.ruff]
+show-fixes = true
+line-length = 120

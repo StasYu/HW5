@@ -1,0 +1,35 @@
+name: Build package
+on:
+  push:
+    branches:
+      - section05
+
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Check out
+      uses: actions/checkout@v4
+    - name: Setup PDM
+      uses: pdm-project/setup-pdm@v4
+      with:
+        python-version: 3.9
+        cache: true
+    - name: Install tools
+      run: pdm install
+
+    - name: Build package
+      run: pdm build
+
+    - name: Upload Wheel
+      uses: actions/upload-artifact@v4
+      with:
+        name: project_build
+        path: dist/*.whl
+
+    - name: Docker build
+      run: docker build --tag yustashw5 .
+    - name: Docker push
+      run: docker push stug101/yustashw5:latest

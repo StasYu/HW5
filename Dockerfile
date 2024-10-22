@@ -9,7 +9,7 @@ COPY .github/workflows/task_2_test.yaml /app/.github/workflows/
 
 RUN python3 -m pip install --upgrade pip setuptools wheel pdm
 RUN pdm lock --check \
-    && pdm -v export --without-hashes -f requirements \
+    && pdm export -f requirements --without-hashes > requirements.txt \
     && python3 -m pip install --no-cache-dir -r requirements.txt
 
     

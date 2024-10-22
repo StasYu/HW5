@@ -1,5 +1,6 @@
 import random
 from typing import List
+import sys
 
 
 def is_prime(x: int) -> bool:
@@ -31,10 +32,20 @@ def checksum(x: List[int]) -> int:
     return int(control_value)
 
 
+# def pipeline(count_num: int, seed_num: int) -> int:
 def pipeline() -> int:
-    primes_list = primes(1000)
-    random.seed(100)
+    print("Введите количество простых чисел")
+    count_num = int(sys.stdin.read().strip())
+    print("\nВведите seed")
+    seed_num = int(sys.stdin.read().strip())
+    print()
+    primes_list = primes(count_num)
+    random.seed(seed_num)
     random.shuffle(primes_list)
+    print("Список простых чисел:")
+    for nums in primes_list:
+        print(nums)
+    print()
     return checksum(primes_list)
 
 

@@ -3,9 +3,9 @@ on:
   push:
   branches:
     - section04  # Запускать CI только для ветки section04
-pull_request:
-  branches:
-    - section04
+  pull_request:
+    branches:
+      - section04
 jobs:
   tests:
     runs-on: ubuntu-latest
